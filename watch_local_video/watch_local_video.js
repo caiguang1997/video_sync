@@ -11,12 +11,11 @@
 // ==/UserScript==
 
 var access_token = "b3d23a312114fc5c3f8a8356dc1efaf5";
-const gist_id = "te8hxbol9rasy65ci3vjg50";
 
-//程序入口
-(function() {
+function watch_local_video() {
+    const gist = "te8hxbol9rasy65ci3vjg50";
+
     var xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function() {
         if(this.readyState === 4) {
@@ -28,7 +27,12 @@ const gist_id = "te8hxbol9rasy65ci3vjg50";
         }
     });
 
-    xhr.open("GET", "https://gitee.com/api/v5/gists/" + gist_id + "?access_token=" + access_token);
+    xhr.open("GET", "https://gitee.com/api/v5/gists/" + gist + "?access_token=" + access_token);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send();
+}
+
+//程序入口
+(function() {
+    watch_local_video()
 })();
